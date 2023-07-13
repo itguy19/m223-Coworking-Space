@@ -17,10 +17,9 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import ch.zli.m223.model.Booking;
-import ch.zli.m223.service.AuthService;
 import ch.zli.m223.service.BookingService;
 
-@Path("/bookings/")
+@Path("/bookings")
 @Tag(name = "Bookings", description = "Handling of bookings")
 public class BookingController {
 
@@ -29,9 +28,17 @@ public class BookingController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Index all Entries.", description = "Returns a list of all entries.")
-    public List<Booking> index() {
+    @Operation(summary = "Index all Bookings", description = "Returns a list of all bookings.")
+    public List<Booking> indexAll() {
         return bookingService.findAll();
+    }
+
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Index all Bookings", description = "Returns a list of all bookings.")
+    public Booking index(@PathParam("id") Long id) {
+        return bookingService.findBooking(id);
     }
 
     @POST
@@ -39,7 +46,7 @@ public class BookingController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new booking.", description = "Creates a new booking and returns the newly added booking.")
     public Booking create(Booking booking) {
-       return bookingService.createEntry(entry);
+       return bookingService.createBooking(booking);
     }
     
     @DELETE
@@ -47,15 +54,34 @@ public class BookingController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Deletes a booking.", description = "Deletes a booking and returns the deleted booking.")
-    public Booking delete(@PathParam("id") Long id) {
-       return bookingService.deleteEntry(id);
+    public void delete(@PathParam("id") Long id) {
+       bookingService.deleteBooking(id);
     }
 
     @PUT
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Edits a booking.", description = "Edits a booking and returns the edited booking.")
-    public Booking edit(Booking entry) {
-       return bookingService.editEntry(entry);
+    @Operation(summary = "Updates a booking.", description = "Updates a booking and returns the updated booking.")
+    public Booking update(@PathParam("id") Long id, Booking entry) {
+       return bookingService.updateBooking(id, entry);
+    }
+
+    @PUT
+    @Path("/{id}/approove")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Approove a booking.", description = "Approoves a booking and returns the approoved booking.")
+    public void approoveBooking(@PathParam("id") Long id) {
+       bookingService.approoveBooking(id);
+    }
+
+    @PUT
+    @Path("/{id}/reject")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Reject a booking.", description = "Reject a booking and returns the rejected booking.")
+    public void rejectBooking(@PathParam("id") Long id) {
+       bookingService.rejectBooking(id);
     }
 }

@@ -24,7 +24,15 @@ public class AuthController {
    @Path("/login")
    @Consumes(MediaType.APPLICATION_JSON)
    @Operation(summary = "Authenticate a user.", description = "Returns a token upon successful authentication.")
-   public Response create(@Valid Credential credential) {
+   public Response login(@Valid Credential credential) {
+      return this.authService.authenticate(credential);
+   }
+
+   @POST
+   @Path("/register")
+   @Consumes(MediaType.APPLICATION_JSON)
+   @Operation(summary = "Authenticate a user.", description = "Returns a token upon successful authentication.")
+   public Response register(@Valid Credential credential) {
       return this.authService.authenticate(credential);
    }
 }

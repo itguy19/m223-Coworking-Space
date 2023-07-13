@@ -18,30 +18,30 @@ import io.smallrye.jwt.build.Jwt;
 @ApplicationScoped
 public class AuthService {
     @Inject
-  UserService userService;
+    UserService userService;
 
-  public Response authenticate(Credential credential) {
-    Optional<ApplicationUser> principal = userService.findByEmail(credential.getEmail());
+    public Response authenticate(Credential credential) {
+        Optional<ApplicationUser> principal = userService.findByEmail(credential.getEmail());
 
-    try {
-      if (principal.isPresent() && principal.get().getPassword().equals(credential.getPassword())) {
-        Instant expiration = Instant.now().plus(Duration.ofHours(24));
-        String token = Jwt
-            .issuer("https://zli.example.com/")
-            .upn(credential.getEmail())
-            .groups(new HashSet<>(Arrays.asList("User", "Admin")))
-            .expiresAt(expiration)
-            .sign();
-        return Response
-            .ok(principal.get())
-            .cookie(new NewCookie("punchclock", token))
-            .header("Authorization", "Bearer " + token)
-            .build();
-      }
-    } catch (Exception e) {
-      System.err.println("Couldn't validate password.");
+        try {
+        if (principal.isPresent() && principal.get().getPassword().equals(credential.getPassword())) {
+            Instant expiration = Instant.now().plus(Duration.ofHours(24));
+            String token = Jwt
+                .issuer("https://zli.example.com/")
+                .upn(credential.getEmail())
+                .groups(new HashSet<>(Arrays.asList("User", "Admin")))
+                .expiresAt(expiration)
+                .sign();
+            return Response
+                .ok(principal.get())
+                .cookie(new NewCookie("coworkingspace", token))
+                .header("Authorization", "Bearer " + token)
+                .build();
+        }
+        } catch (Exception e) {
+        System.err.println("Couldn't validate password.");
+        }
+
+        return Response.status(Response.Status.FORBIDDEN).build();
     }
-
-    return Response.status(Response.Status.FORBIDDEN).build();
-  }
 }
