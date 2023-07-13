@@ -19,7 +19,7 @@ public class UserService {
     public ApplicationUser createUser(ApplicationUser user) {
         return entityManager.merge(user);
     }
-    
+
     @Transactional
     public void deleteUser(Long id) {
         var entity = entityManager.find(ApplicationUser.class, id);

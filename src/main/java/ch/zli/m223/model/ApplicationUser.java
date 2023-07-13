@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class ApplicationUser {
-  
+
   @Id
   @Inject
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,8 +35,12 @@ public class ApplicationUser {
   private String lastname;
 
   @Inject
-  @Column(nullable = false)
+  @Column(nullable = true)
   private String sex;
+
+  @Inject
+  @Column(nullable = true)
+  private String bio;
 
   @Inject
   @Column(nullable = false)
@@ -106,4 +110,47 @@ public class ApplicationUser {
     this.bookings = bookings;
   }
 
+  public String getForename() {
+    return forename;
+  }
+
+  public void setForename(String forename) {
+    this.forename = forename;
+  }
+
+  public String getLastname() {
+    return lastname;
+  }
+
+  public void setLastname(String lastname) {
+    this.lastname = lastname;
+  }
+
+  public String getSex() {
+    return sex;
+  }
+
+  public void setSex(String sex) {
+    this.sex = sex;
+  }
+
+  public String getBio() {
+    return bio;
+  }
+
+  public void setBio(String bio) {
+    this.bio = bio;
+  }
+
+  public int getAge() {
+    return age;
+  }
+
+  public void setAge(int age) {
+    this.age = age;
+  }
+
+  public void setBookings(Set<Booking> bookings) {
+    this.bookings = bookings;
+  }
 }

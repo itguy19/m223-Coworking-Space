@@ -16,7 +16,6 @@ import javax.ws.rs.core.Response;
 import ch.zli.m223.model.ApplicationUser;
 import ch.zli.m223.model.Credential;
 import io.smallrye.jwt.build.Jwt;
-import io.smallrye.jwt.build.JwtClaimsBuilder;
 
 @ApplicationScoped
 public class AuthService {
