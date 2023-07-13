@@ -37,18 +37,6 @@ public class UserController {
          return userService.findAll();
    }
 
-   @POST
-   @Produces(MediaType.APPLICATION_JSON)
-   @Consumes(MediaType.APPLICATION_JSON)
-   @Operation(
-         summary = "Creates a new user. Also known as registration.", 
-         description = "Creates a new user and returns the newly added user."
-   )
-   @PermitAll
-   public ApplicationUser create(ApplicationUser user) {
-      return userService.createUser(user);
-   }
-
    @Path("/{id}")
    @DELETE
    @Operation(

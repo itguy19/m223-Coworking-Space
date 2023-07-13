@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import ch.zli.m223.model.ApplicationUser;
+import ch.zli.m223.model.RoleEnum;
 
 @ApplicationScoped
 public class UserService {
@@ -17,6 +18,14 @@ public class UserService {
 
     @Transactional
     public ApplicationUser createUser(ApplicationUser user) {
+        user.setRole(RoleEnum.MEMBER);
+        
+        Long amountOfUsers = entityManager
+                .createNamedQuery("ApplicationUser.getAmountOfUsers", Long.class)
+                .getSingleResult();
+        if (amountOfUsers == 0) {
+            user.setRole(RoleEnum.ADMIN);    
+        }
         return entityManager.merge(user);
     }
 
