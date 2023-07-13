@@ -17,14 +17,14 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import ch.zli.m223.model.Entry;
-import ch.zli.m223.service.EntryService;
+import ch.zli.m223.service.AuthService;
 
-@Path("/entries")
-@Tag(name = "Entries", description = "Handling of entries")
-public class EntryController {
+@Path("/")
+@Tag(name = "Authentication", description = "Handling authentication")
+public class AuthController {
 
     @Inject
-    EntryService entryService;
+    AuthService entryService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

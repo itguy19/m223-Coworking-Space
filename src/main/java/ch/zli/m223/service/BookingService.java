@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import ch.zli.m223.model.Entry;
 
 @ApplicationScoped
-public class EntryService {
+public class BookingService {
     @Inject
     private EntityManager entityManager;
 
