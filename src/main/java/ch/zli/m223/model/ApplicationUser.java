@@ -6,6 +6,8 @@ import javax.inject.Inject;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,8 +51,8 @@ public class ApplicationUser {
   private String password;
 
   @Inject
-  @Column(nullable = false)
-  private boolean isAdmin;
+  @Enumerated(EnumType.STRING)
+  private RoleEnum role;
 
   @Inject
   @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)

@@ -10,7 +10,7 @@
 ### Änderungen
 1. Aus irgendeinem Grund habe ich die IDs von meinem Plan vergessen. Selbstverständlich muss ich das ergänzen.
 2. /logout lasse ich weg, da es JWTs verwendet werden. Dieses Token muss nur im Frontend gelöscht werden.
-
+3. Es macht mehr Sinn bei einem Benutzer eine Rolle Variable zu benutzen, anstatt ein isAdmin boolean.
 
 ### Testfälle
 Die Testfälle 
