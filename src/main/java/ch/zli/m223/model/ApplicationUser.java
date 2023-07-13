@@ -3,6 +3,7 @@ package ch.zli.m223.model;
 import java.util.Set;
 
 import javax.inject.Inject;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -52,15 +53,10 @@ public class ApplicationUser {
   private boolean isAdmin;
 
   @Inject
-  @OneToMany(mappedBy = "applicationUser")
+  @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
   @JsonIgnore
   @Fetch(FetchMode.JOIN)
   private Set<Booking> bookings;
-
-  //public ApplicationUser(String email, String password) {
-  //  this.email = email;
-  //  this.password = password;
-  //}
 
   public ApplicationUser() {}
 

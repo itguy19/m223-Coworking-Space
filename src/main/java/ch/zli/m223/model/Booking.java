@@ -16,6 +16,10 @@ public class Booking {
     private Long id;
 
     @Inject
+    @ManyToOne
+    private ApplicationUser user; 
+
+    @Inject
     @Column(nullable = false)
     private LocalDateTime startDateTime;
 

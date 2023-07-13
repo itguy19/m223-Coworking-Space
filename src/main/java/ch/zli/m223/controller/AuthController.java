@@ -1,6 +1,7 @@
 package ch.zli.m223.controller;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -12,7 +13,6 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import ch.zli.m223.service.AuthService;
 import ch.zli.m223.model.Credential;
-import jakarta.validation.Valid;
 
 @Path("/")
 @Tag(name = "Authentication", description = "Handling authentication")

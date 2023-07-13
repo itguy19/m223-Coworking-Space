@@ -1,6 +1,6 @@
 package ch.zli.m223.model;
 
-import jakarta.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 public class Credential {
 
