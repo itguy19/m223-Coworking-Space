@@ -11,6 +11,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.hibernate.annotations.Fetch;
@@ -18,6 +20,8 @@ import org.hibernate.annotations.FetchMode;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@NamedQueries({@NamedQuery(name = "ApplicationUser.findByEmail",
+    query = "SELECT u FROM ApplicationUser u WHERE u.email = :email")})
 public class ApplicationUser {
 
   @Id
