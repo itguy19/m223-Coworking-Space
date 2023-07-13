@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class ApplicationUser {
-
+  
   @Id
   @Inject
   @GeneratedValue(strategy = GenerationType.IDENTITY)

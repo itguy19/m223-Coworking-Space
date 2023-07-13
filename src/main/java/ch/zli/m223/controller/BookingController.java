@@ -2,6 +2,7 @@ package ch.zli.m223.controller;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -21,6 +22,7 @@ import ch.zli.m223.service.BookingService;
 
 @Path("/bookings")
 @Tag(name = "Bookings", description = "Handling of bookings")
+@RolesAllowed({"member", "admin"})
 public class BookingController {
 
     @Inject
@@ -28,6 +30,7 @@ public class BookingController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed("admin")
     @Operation(summary = "Index all Bookings", description = "Returns a list of all bookings.")
     public List<Booking> indexAll() {
         return bookingService.findAll();
@@ -36,7 +39,7 @@ public class BookingController {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Index all Bookings", description = "Returns a list of all bookings.")
+    @Operation(summary = "Index a booking", description = "Returns a booking.")
     public Booking index(@PathParam("id") Long id) {
         return bookingService.findBooking(id);
     }
@@ -71,6 +74,7 @@ public class BookingController {
     @Path("/{id}/approove")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @RolesAllowed("admin")
     @Operation(summary = "Approove a booking.", description = "Approoves a booking and returns the approoved booking.")
     public void approoveBooking(@PathParam("id") Long id) {
        bookingService.approoveBooking(id);
@@ -80,6 +84,7 @@ public class BookingController {
     @Path("/{id}/reject")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @RolesAllowed("admin")
     @Operation(summary = "Reject a booking.", description = "Reject a booking and returns the rejected booking.")
     public void rejectBooking(@PathParam("id") Long id) {
        bookingService.rejectBooking(id);
