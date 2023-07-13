@@ -16,45 +16,46 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
-import ch.zli.m223.model.Entry;
+import ch.zli.m223.model.Booking;
 import ch.zli.m223.service.AuthService;
+import ch.zli.m223.service.BookingService;
 
-@Path("/entries")
-@Tag(name = "Entries", description = "Handling of entries")
+@Path("/bookings/")
+@Tag(name = "Bookings", description = "Handling of bookings")
 public class BookingController {
 
     @Inject
-    AuthService entryService;
+    BookingService bookingService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Entries.", description = "Returns a list of all entries.")
-    public List<Entry> index() {
-        return entryService.findAll();
+    public List<Booking> index() {
+        return bookingService.findAll();
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Creates a new entry.", description = "Creates a new entry and returns the newly added entry.")
-    public Entry create(Entry entry) {
-       return entryService.createEntry(entry);
+    @Operation(summary = "Creates a new booking.", description = "Creates a new booking and returns the newly added booking.")
+    public Booking create(Booking booking) {
+       return bookingService.createEntry(entry);
     }
     
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Deletes and entry.", description = "Deletes and entry and returns the deleted entry.")
-    public Entry delete(@PathParam("id") Long id) {
-       return entryService.deleteEntry(id);
+    @Operation(summary = "Deletes a booking.", description = "Deletes a booking and returns the deleted booking.")
+    public Booking delete(@PathParam("id") Long id) {
+       return bookingService.deleteEntry(id);
     }
 
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Edits and entry.", description = "Edits and entry and returns the edited entry.")
-    public Entry edit(Entry entry) {
-       return entryService.editEntry(entry);
+    @Operation(summary = "Edits a booking.", description = "Edits a booking and returns the edited booking.")
+    public Booking edit(Booking entry) {
+       return bookingService.editEntry(entry);
     }
 }

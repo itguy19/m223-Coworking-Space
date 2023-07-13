@@ -1,49 +1,47 @@
 package ch.zli.m223.service;
 
-import java.util.List;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
+import javax.ws.rs.core.NewCookie;
+import javax.ws.rs.core.Response;
 
-import ch.zli.m223.model.Entry;
+import ch.zli.m223.model.ApplicationUser;
+import ch.zli.m223.model.Credential;
+import io.smallrye.jwt.build.Jwt;
 
 @ApplicationScoped
 public class AuthService {
     @Inject
-    private EntityManager entityManager;
+  UserService userService;
 
-    @Transactional
-    public Entry createEntry(Entry entry) {
-        entityManager.persist(entry);
-        return entry;
+  public Response authenticate(Credential credential) {
+    Optional<ApplicationUser> principal = userService.findByEmail(credential.getEmail());
+
+    try {
+      if (principal.isPresent() && principal.get().getPassword().equals(credential.getPassword())) {
+        Instant expiration = Instant.now().plus(Duration.ofHours(24));
+        String token = Jwt
+            .issuer("https://zli.example.com/")
+            .upn(credential.getEmail())
+            .groups(new HashSet<>(Arrays.asList("User", "Admin")))
+            .expiresAt(expiration)
+            .sign();
+        return Response
+            .ok(principal.get())
+            .cookie(new NewCookie("punchclock", token))
+            .header("Authorization", "Bearer " + token)
+            .build();
+      }
+    } catch (Exception e) {
+      System.err.println("Couldn't validate password.");
     }
 
-    public List<Entry> findAll() {
-        var query = entityManager.createQuery("FROM Entry", Entry.class);
-        return query.getResultList();
-    }
-
-    // Delete 
-    @Transactional
-    public Entry deleteEntry(Long id) {
-        Entry entry = entityManager.find(Entry.class, id);
-        if (entry != null) {
-            entityManager.remove(entry);
-        }
-        return entry;
-    }
-
-    // Edit entry
-    @Transactional
-    public Entry editEntry(Entry updatedEntry) {
-        Entry entry = entityManager.find(Entry.class, updatedEntry.getId());
-        if (entry != null) {
-            entry.setCheckOut(updatedEntry.getCheckOut());
-            entry.setCheckIn(updatedEntry.getCheckIn());
-            entityManager.merge(entry);
-        }
-        return entry;
-    }
+    return Response.status(Response.Status.FORBIDDEN).build();
+  }
 }

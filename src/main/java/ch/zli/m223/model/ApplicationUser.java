@@ -1,6 +1,8 @@
 package ch.zli.m223.model;
 
 import java.util.Set;
+
+import javax.inject.Inject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,25 +18,49 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class ApplicationUser {
 
   @Id
+  @Inject
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Schema(readOnly = true)
   private long id;
 
+  @Inject
+  @Column(nullable = false)
+  private String forename;
+
+  @Inject
+  @Column(nullable = false)
+  private String lastname;
+
+  @Inject
+  @Column(nullable = false)
+  private String sex;
+
+  @Inject
+  @Column(nullable = false)
+  private int age;
+
+  @Inject
   @Column(nullable = false, unique = true)
   private String email;
 
+  @Inject
   @Column(nullable = false)
   private String password;
 
+  @Inject
+  @Column(nullable = false)
+  private boolean isAdmin;
+
+  @Inject
   @OneToMany(mappedBy = "applicationUser")
   @JsonIgnore
   @Fetch(FetchMode.JOIN)
-  private Set<Entry> entries;
+  private Set<Booking> bookings;
 
-  public ApplicationUser(String email, String password) {
-    this.email = email;
-    this.password = password;
-  }
+  //public ApplicationUser(String email, String password) {
+  //  this.email = email;
+  //  this.password = password;
+  //}
 
   public ApplicationUser() {}
 
@@ -66,12 +92,12 @@ public class ApplicationUser {
     return email;
   }
 
-  public Set<Entry> getEntries() {
-    return entries;
+  public Set<Booking> getBookings() {
+    return bookings;
   }
 
-  public void setEntries(Set<Entry> entries) {
-    this.entries = entries;
+  public void setEntries(Set<Booking> bookings) {
+    this.bookings = bookings;
   }
 
 }

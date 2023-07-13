@@ -1,13 +1,14 @@
 package ch.zli.m223.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import ch.zli.m223.model.Entry;
+import ch.zli.m223.model.ApplicationUser;
 
 @ApplicationScoped
 public class UserService {
@@ -15,35 +16,32 @@ public class UserService {
     private EntityManager entityManager;
 
     @Transactional
-    public Entry createEntry(Entry entry) {
-        entityManager.persist(entry);
-        return entry;
+    public ApplicationUser createUser(ApplicationUser user) {
+        return entityManager.merge(user);
     }
 
-    public List<Entry> findAll() {
-        var query = entityManager.createQuery("FROM Entry", Entry.class);
+    @Transactional
+    public void deleteUser(Long id) {
+        var entity = entityManager.find(ApplicationUser.class, id);
+        entityManager.remove(entity);
+    }
+
+    @Transactional
+    public ApplicationUser updateUser(Long id, ApplicationUser user) {
+        user.setId(id);
+        return entityManager.merge(user);
+    }
+
+    public List<ApplicationUser> findAll() {
+        var query = entityManager.createQuery("FROM ApplicationUser", ApplicationUser.class);
         return query.getResultList();
     }
 
-    // Delete 
-    @Transactional
-    public Entry deleteEntry(Long id) {
-        Entry entry = entityManager.find(Entry.class, id);
-        if (entry != null) {
-            entityManager.remove(entry);
-        }
-        return entry;
-    }
-
-    // Edit entry
-    @Transactional
-    public Entry editEntry(Entry updatedEntry) {
-        Entry entry = entityManager.find(Entry.class, updatedEntry.getId());
-        if (entry != null) {
-            entry.setCheckOut(updatedEntry.getCheckOut());
-            entry.setCheckIn(updatedEntry.getCheckIn());
-            entityManager.merge(entry);
-        }
-        return entry;
+    public Optional<ApplicationUser> findByEmail(String email) {
+        return entityManager
+                .createNamedQuery("ApplicationUser.findByEmail", ApplicationUser.class)
+                .setParameter("email", email)
+                .getResultStream()
+                .findFirst();
     }
 }
