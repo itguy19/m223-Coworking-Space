@@ -1,5 +1,5 @@
 # Coworking-Space
-
+Dieses Projekt bietet eine innovative und total sichere API für das revolutionäre Coworking-Space. Man kann Benutzer verwalten und Buchungen machen.
 
 ### Datenbankadministration
 
@@ -10,16 +10,25 @@
  - Username: `postgres`
  - Password: `postgres`
 
+### Projektstart
+1. Von git dieses Projekt klonen
+2. In VS-Code öffnen
+3. Benötigte Vs-Code-Extensions herunterladen: Docker, Quarkus, ....
+3. Devcontainer starten
+4. Projekt starten mit CTRL+SHIFT+P -> Quarkus: Debug Current Project
+
+### Testdaten
+Die Testdaten werden in TestDataService automatisch bei der Start generiert.
+
+### Testfälle
+Alle Testfälle wurden in Thunder Client erstellt.
+
+
+
 ### Änderungen
 1. Aus irgendeinem Grund habe ich die IDs von meinem Plan vergessen. Selbstverständlich muss ich das ergänzen.
 2. /logout lasse ich weg, da es JWTs verwendet werden. Dieses Token muss nur im Frontend gelöscht werden.
 3. Es macht mehr Sinn bei einem Benutzer eine Rolle Variable zu benutzen, anstatt ein isAdmin boolean.
-
-### Testdaten
-Die Testdaten werden in TestDataService generiert.
-
-### Testfälle
-Alle Testfälle wurden in Thunder Client erstellt.
 
 ### Hilfsmittel
 Bei Fehlermeldungen wurde das Tool ChatGPT benutzt, um Lösungen zu finden.
