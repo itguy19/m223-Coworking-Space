@@ -1,9 +1,5 @@
 package ch.zli.m223.controller;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;

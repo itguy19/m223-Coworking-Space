@@ -1,6 +1,7 @@
 package ch.zli.m223.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -10,13 +11,16 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import ch.zli.m223.model.ApplicationUser;
+import ch.zli.m223.model.RoleEnum;
 import ch.zli.m223.service.UserService;
 
 @Path("/users")
@@ -42,9 +46,14 @@ public class UserController {
          summary = "Deletes a user.",
          description = "Deletes a user by its id."
    )
-   public Response delete(@PathParam("id") Long id) {
+   public Response delete(@PathParam("id") Long id, @Context SecurityContext sc) {
+      Optional<ApplicationUser> user = userService.findByEmail(sc.getUserPrincipal().getName());
       try {
-            userService.deleteUser(id);
+            if (user.get().getRole() == RoleEnum.ADMIN || id == user.get().getId()) {
+                  userService.deleteUser(id);
+            } else {
+                  return Response.status(403, "Verboten").build();
+            }
       } catch (Exception exception) {
             return Response.status(404, "Benutzer konnte nicht gelöscht").build();
       }

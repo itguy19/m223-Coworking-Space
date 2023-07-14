@@ -13,7 +13,7 @@
 3. Es macht mehr Sinn bei einem Benutzer eine Rolle Variable zu benutzen, anstatt ein isAdmin boolean.
 
 ### Testdaten
-Die Testdaten werden
+Die Testdaten werden in TestDataService generiert.
 
 ### Testfälle
 Alle Testfälle wurden in Thunder Client erstellt.

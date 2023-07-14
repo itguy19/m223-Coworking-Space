@@ -69,6 +69,7 @@ public class TestDataService {
     buchung1.setEndDateTime(LocalDateTime.now().plusSeconds(150));
     buchung1.setCancelled(false); 
     buchung1.setApproved(false); 
+    buchung1.setUser(admin);
     entityManager.persist(buchung1);
 
     var buchung2 = new Booking();
@@ -76,6 +77,7 @@ public class TestDataService {
     buchung2.setEndDateTime(LocalDateTime.now().plusSeconds(17));
     buchung2.setCancelled(false); 
     buchung2.setApproved(false); 
+    buchung2.setUser(mitglied3);
     entityManager.persist(buchung2);
 
     var buchung3 = new Booking();
@@ -83,6 +85,7 @@ public class TestDataService {
     buchung3.setEndDateTime(LocalDateTime.now().plusSeconds(150));
     buchung3.setCancelled(false);
     buchung3.setApproved(false);
+    buchung3.setUser(mitglied4);
     entityManager.persist(buchung3);
 
     var buchung4 = new Booking();
@@ -90,6 +93,7 @@ public class TestDataService {
     buchung4.setEndDateTime(LocalDateTime.now().plusSeconds(300));
     buchung4.setCancelled(false);
     buchung4.setApproved(false);
+    buchung4.setUser(admin);
     entityManager.persist(buchung4);
 
     var buchung5 = new Booking();
@@ -97,6 +101,7 @@ public class TestDataService {
     buchung5.setEndDateTime(LocalDateTime.now().plusSeconds(450));
     buchung5.setCancelled(false);
     buchung5.setApproved(false);
+    buchung5.setUser(mitglied5);
     entityManager.persist(buchung5);
   }
 }
