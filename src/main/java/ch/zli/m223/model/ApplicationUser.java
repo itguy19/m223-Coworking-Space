@@ -20,10 +20,8 @@ import org.hibernate.annotations.FetchMode;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@NamedQueries({@NamedQuery(name = "ApplicationUser.findByEmail",
-    query = "SELECT u FROM ApplicationUser u WHERE u.email = :email"),
-    @NamedQuery(name = "ApplicationUser.getAmountOfUsers",
-    query = "SELECT count(*) FROM ApplicationUser")})
+@NamedQueries({@NamedQuery(name = "ApplicationUser.findByEmail", query = "SELECT u FROM ApplicationUser u WHERE u.email = :email"),
+              @NamedQuery(name = "ApplicationUser.getAmountOfUsers", query = "SELECT count(*) FROM ApplicationUser")})
 public class ApplicationUser {
 
   @Id

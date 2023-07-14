@@ -2,10 +2,8 @@ package ch.zli.m223.service;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -43,7 +41,7 @@ public class AuthService {
                 return Response.status(400, "Daten ungültig").build();
             }
         } catch (Exception e) {
-            System.err.println("Couldn't validate password.");
+            System.err.println("Signature exception");
             return Response.status(400, "Es ist ein Problem aufgetreten").build();
         }
     }
