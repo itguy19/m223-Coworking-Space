@@ -1,0 +1,161 @@
+commit 1a0a45d7058a0a1833e44b550f462b6480dd0dda
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Fri Jul 14 14:19:03 2023 +0000
+
+    Updated READMe.md
+
+commit 79e92593fd0df3e4b5a09deef79bf81bdb2a8673
+Author: itguy19 <125930481+itguy19@users.noreply.github.com>
+Date:   Fri Jul 14 16:18:47 2023 +0200
+
+    Update README.md
+
+commit d45da834c3562f26c4066bfd77d583c9ea4a4994
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Fri Jul 14 14:15:41 2023 +0000
+
+    Updated README.md.
+
+commit 91ad152cba4bc3cc7d1440df4c6aca6b5bb06a5d
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Fri Jul 14 14:09:02 2023 +0000
+
+    Fixed title
+
+commit a8e653c282c9645f8442f2187974258607c406f3
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Fri Jul 14 14:08:11 2023 +0000
+
+    Finished test cases
+
+commit 2bba09c03117f099014428dc69091b3e94c3227f
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Fri Jul 14 13:50:51 2023 +0000
+
+    Fixed test data.
+
+commit 75933015966bd530fd78eb0f62dee85c456d5ca1
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Fri Jul 14 13:32:58 2023 +0000
+
+    Added test data
+
+commit e6b236d8db81c5e93ade1fff04fad0d080e34a1f
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Fri Jul 14 13:18:38 2023 +0000
+
+    Added responses
+
+commit bb4096d124e1babec7299fb17629cbea796a2538
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Fri Jul 14 11:53:45 2023 +0000
+
+    Fixed maven dependencies.
+
+commit d152b6b2eeec515d0784feb4a4827df8c64e7ed1
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Fri Jul 14 08:56:50 2023 +0000
+
+    Quick fixes. Added new responses.
+
+commit 1bcc7e39cd20f91f7224f85bc02b60a2bafdc25b
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Fri Jul 14 07:29:51 2023 +0000
+
+    Added getters and setters for users in Booking.
+
+commit 35d52a9972a2d2c571f8e5370d71efe9040baff3
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Fri Jul 14 07:08:28 2023 +0000
+
+    Added response codes to the controller.
+
+commit c4cd9f18c483f0725118e28e982b9c3df3e3409c
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Fri Jul 14 06:47:44 2023 +0000
+
+    Added planned response codes
+
+commit df6e254870f7214bd0cb96d6344aea09256fe0e3
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 14:40:48 2023 +0000
+
+    Implemented first user admin functionality.
+
+commit 01b18cee267a5638838e839d06372dc3b0ee0a42
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 14:17:52 2023 +0000
+
+    Don't care about security. So here is my privkey.
+
+commit af7fe1f08b8c2bc167b2cceee2026b6595e74f0c
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 14:17:24 2023 +0000
+
+    Fixed jwt problems. Needed to add keys.
+
+commit 914ba81d1e59185acdbdd25b5a124c8c518fcb98
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 13:35:40 2023 +0000
+
+    Added getters and setters in ApplicationUser
+
+commit 65d3a3200a06a919bd0387ee26c27557a1bf618b
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 12:53:49 2023 +0000
+
+    Added role checks
+
+commit 307226c2155f95e8da0f62e688717cd6a1d34534
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 12:47:35 2023 +0000
+
+    Implemented new roles
+
+commit cf6fe6912514a0485abaf930d48a1c26b0de3081
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 12:22:05 2023 +0000
+
+    Updated README and imported libraries.
+
+commit e352c4e5aa3c0a8db906a4f074a01cd5fbb90c0f
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 12:17:30 2023 +0000
+
+    Added a new RoleEnum
+
+commit 47d79dd416c07f176b13661a6f5ae353544cc114
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 11:43:52 2023 +0000
+
+    Configured project, so it can run.
+
+commit 739d4e70cd87685c5e6ca1be017336a17c1fae0f
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 11:43:15 2023 +0200
+
+    Finished implementing the booking methods
+
+commit ba05394e8a7c8056d6bf310c45c0375e7c52667a
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 10:34:14 2023 +0200
+
+    Did some refactoring cleanup
+
+commit 2888b2aa668fae9227e06e5aa866a858579076b5
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 09:28:03 2023 +0200
+
+    Finished modal classes
+
+commit 6eaefb6afafdca5972ac3929340d38931f799313
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 08:59:09 2023 +0200
+
+    Added new service and controller files
+
+commit 319f12207f606aeee410bac3f168aac6da91c16c
+Author: itguy19 <andras.ts04@gmail.com>
+Date:   Thu Jul 13 08:43:50 2023 +0200
+
+    Initial commit

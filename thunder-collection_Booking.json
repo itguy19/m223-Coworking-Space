@@ -1,0 +1,163 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Booking",
+    "dateExported": "2023-07-14T14:29:21.194Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "8c71b205-09b9-4f38-aa17-b5bf79283ca7",
+            "colId": "a524de7f-a2e4-4a37-aa87-00562117a192",
+            "containerId": "",
+            "name": "create booking",
+            "url": "localhost:8080/bookings",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-07-14T07:15:09.518Z",
+            "modified": "2023-07-14T12:36:29.069Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"startDateTime\": \"2018-12-10T13:49:51.141Z\",\n  \"endDateTime\": \"2019-12-10T13:49:51.141Z\",\n  \"reservedForWholeDay\": true\n}",
+                "form": []
+            },
+            "tests": [],
+            "preReq": {
+                "runRequests": [
+                    {
+                        "reqId": "98d805cf-88a3-4e69-bcdd-f6aa44616b34",
+                        "colId": "c4ee6bc6-fdcf-46c3-96a3-212b0527cd10",
+                        "triggerCondition": "run-always",
+                        "triggerValue": ""
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "18be3a73-dda4-4478-beea-066f3b0618ea",
+            "colId": "a524de7f-a2e4-4a37-aa87-00562117a192",
+            "containerId": "",
+            "name": "update booking",
+            "url": "localhost:8080/bookings/1",
+            "method": "PUT",
+            "sortNum": 12500,
+            "created": "2023-07-14T12:27:12.195Z",
+            "modified": "2023-07-14T12:41:38.822Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"startDateTime\": \"2018-12-10T13:49:51.141Z\",\n  \"endDateTime\": \"2023-12-10T13:49:51.141Z\",\n  \"reservedForWholeDay\": true\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0b57b6b4-6577-4c36-854d-47e217ad12fb",
+            "colId": "a524de7f-a2e4-4a37-aa87-00562117a192",
+            "containerId": "",
+            "name": "list bookings",
+            "url": "localhost:8080/bookings",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2023-07-14T11:58:27.009Z",
+            "modified": "2023-07-14T12:01:13.723Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f6361245-deb8-42c8-b21d-1d78e4c2efc2",
+            "colId": "a524de7f-a2e4-4a37-aa87-00562117a192",
+            "containerId": "",
+            "name": "delete booking",
+            "url": "localhost:8080/bookings/1",
+            "method": "DELETE",
+            "sortNum": 20000,
+            "created": "2023-07-14T11:51:13.840Z",
+            "modified": "2023-07-14T12:37:26.342Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": [],
+            "preReq": {
+                "runRequests": [
+                    {
+                        "reqId": "8c71b205-09b9-4f38-aa17-b5bf79283ca7",
+                        "colId": "a524de7f-a2e4-4a37-aa87-00562117a192",
+                        "triggerCondition": "run-always",
+                        "triggerValue": ""
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "df76a256-98d8-49ff-93be-2f284e3ce271",
+            "colId": "a524de7f-a2e4-4a37-aa87-00562117a192",
+            "containerId": "",
+            "name": "approve booking",
+            "url": "localhost:8080/bookings/approve/1",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-07-14T12:02:27.818Z",
+            "modified": "2023-07-14T13:49:16.813Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b30dad70-c061-4b98-a834-8d7c365bcd68",
+            "colId": "a524de7f-a2e4-4a37-aa87-00562117a192",
+            "containerId": "",
+            "name": "reject booking",
+            "url": "localhost:8080/bookings/reject/1",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2023-07-14T12:12:08.785Z",
+            "modified": "2023-07-14T14:06:32.406Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": [],
+            "preReq": {
+                "runRequests": [
+                    {
+                        "reqId": "8c71b205-09b9-4f38-aa17-b5bf79283ca7",
+                        "colId": "a524de7f-a2e4-4a37-aa87-00562117a192",
+                        "triggerCondition": "run-always",
+                        "triggerValue": ""
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,191 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "User",
+    "dateExported": "2023-07-14T14:29:07.498Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "0c96b828-c91a-4ae4-a29e-17e1ebd59401",
+            "colId": "c4ee6bc6-fdcf-46c3-96a3-212b0527cd10",
+            "containerId": "",
+            "name": "register user",
+            "url": "localhost:8080/register",
+            "method": "POST",
+            "sortNum": 12500,
+            "created": "2023-07-14T11:52:14.898Z",
+            "modified": "2023-07-14T11:52:56.864Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"forename\": \"Joe\",\n  \"lastname\": \"Don\",\n  \"sex\": \"Don-gwon\",\n  \"age\": 61,\n  \"bio\": \"Love playing football\",\n  \"email\": \"hey@hey.com\",\n  \"password\": \"hey\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bed0046b-4005-4d72-9038-f027dac7ab58",
+            "colId": "c4ee6bc6-fdcf-46c3-96a3-212b0527cd10",
+            "containerId": "",
+            "name": "register user with same credentials (FAIL)",
+            "url": "localhost:8080/register",
+            "method": "POST",
+            "sortNum": 15000,
+            "created": "2023-07-14T06:55:19.832Z",
+            "modified": "2023-07-14T06:55:19.832Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"forename\": \"Bob\",\n  \"lastname\": \"Hawi\",\n  \"sex\": \"Dino\",\n  \"age\": 19,\n  \"bio\": \"Love playing football\",\n  \"email\": \"test@test.com\",\n  \"password\": \"test\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "64616a27-c314-43a1-b94e-2c743f7104d4",
+            "colId": "c4ee6bc6-fdcf-46c3-96a3-212b0527cd10",
+            "containerId": "",
+            "name": "login as admin",
+            "url": "localhost:8080/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-07-13T12:12:10.529Z",
+            "modified": "2023-07-14T14:06:22.072Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"email\": \"test@test.com\",\n \"password\": \"test\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                }
+            ]
+        },
+        {
+            "_id": "3b96d31f-ca6a-4afd-8ff2-f0a9593ac798",
+            "colId": "c4ee6bc6-fdcf-46c3-96a3-212b0527cd10",
+            "containerId": "",
+            "name": "login as member",
+            "url": "localhost:8080/login",
+            "method": "POST",
+            "sortNum": 25000,
+            "created": "2023-07-14T14:04:43.119Z",
+            "modified": "2023-07-14T14:06:14.557Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"email\": \"xhaofanghuendong@gmail.com\",\n \"password\": \"obrigado56789\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                }
+            ]
+        },
+        {
+            "_id": "b6173c7d-ddf6-4a78-aae9-2b6a24129fc9",
+            "colId": "c4ee6bc6-fdcf-46c3-96a3-212b0527cd10",
+            "containerId": "",
+            "name": "list users",
+            "url": "localhost:8080/users",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-07-13T13:57:40.708Z",
+            "modified": "2023-07-13T13:57:55.092Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0191b73f-a87c-4f38-9f65-8f546c2976c5",
+            "colId": "c4ee6bc6-fdcf-46c3-96a3-212b0527cd10",
+            "containerId": "",
+            "name": "update user",
+            "url": "localhost:8080/users/1",
+            "method": "PUT",
+            "sortNum": 35000,
+            "created": "2023-07-14T06:22:23.264Z",
+            "modified": "2023-07-14T06:25:34.353Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"forename\": \"Kevin\",\n  \"lastname\": \"Kevin\",\n  \"sex\": \"Mann\",\n  \"age\": 19,\n  \"bio\": \"Love playing football\",\n  \"email\": \"test@test.com\",\n  \"password\": \"test\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "782d0622-95bc-4fea-a1f8-f262bf04681e",
+            "colId": "c4ee6bc6-fdcf-46c3-96a3-212b0527cd10",
+            "containerId": "",
+            "name": "update user with invalid data (FAIL)",
+            "url": "localhost:8080/users/1111",
+            "method": "PUT",
+            "sortNum": 37500,
+            "created": "2023-07-14T14:00:48.471Z",
+            "modified": "2023-07-14T14:03:04.220Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"forename\": \"Kevin\",\n  \"lastname\": \"Kevin\",\n  \"sex\": \"Mann\",\n  \"age\": 19,\n  \"bio\": \"Love playing football\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "404"
+                }
+            ]
+        },
+        {
+            "_id": "c3e795fc-c8f8-4aad-a1cc-21f95012f650",
+            "colId": "c4ee6bc6-fdcf-46c3-96a3-212b0527cd10",
+            "containerId": "",
+            "name": "delete user",
+            "url": "localhost:8080/users/1",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-07-13T14:19:28.158Z",
+            "modified": "2023-07-14T13:39:37.698Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f12042f6-d383-4783-9e6e-7a3c4205bfb0",
+            "colId": "c4ee6bc6-fdcf-46c3-96a3-212b0527cd10",
+            "containerId": "",
+            "name": "delete non-existing user (FAIL)",
+            "url": "localhost:8080/users/1",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-07-14T07:06:56.341Z",
+            "modified": "2023-07-14T07:06:56.341Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
