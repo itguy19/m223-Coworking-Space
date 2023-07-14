@@ -27,8 +27,8 @@ public class TestDataService {
     var admin = new ApplicationUser();
     admin.setForename("Ferrari-Mafia");
     admin.setLastname("Pagani");
-    admin.setEmail("ferrari-mafia.pagani@gmail.com");
-    admin.setPassword("Joao123");
+    admin.setEmail("test@test.com");
+    admin.setPassword("test");
     admin.setRole(RoleEnum.ADMIN);
     entityManager.persist(admin);
 

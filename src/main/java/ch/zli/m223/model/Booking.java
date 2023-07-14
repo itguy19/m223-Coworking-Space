@@ -26,7 +26,7 @@ public class Booking {
     private boolean isCancelled;
 
     @Column(nullable = false)
-    private boolean isApprooved;
+    private boolean isApproved;
     
     @Column(nullable = false)
     private boolean reservedForWholeDay;
@@ -80,10 +80,10 @@ public class Booking {
     }
 
     public boolean isApprooved() {
-        return isApprooved;
+        return isApproved;
     }
 
-    public void setApproved(boolean isApprooved) {
-        this.isApprooved = isApprooved;
+    public void setApproved(boolean isApproved) {
+        this.isApproved = isApproved;
     }
 }

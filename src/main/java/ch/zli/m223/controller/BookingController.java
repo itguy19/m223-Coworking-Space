@@ -102,10 +102,11 @@ public class BookingController {
       try {
          bookingService.approveBooking(id);
       } catch (Exception exception) {
-         return Response.status(200, "Buchung genehmigt").build();
+         return Response.status(404, "Buchung konnte nicht genehmigt werden").build();
+    
       }
-      return Response.status(404, "Buchung konnte nicht genehmigt werden").build();
-    }
+      return Response.status(200, "Buchung genehmigt").build();
+      }
 
     @PUT
     @Path("/reject/{id}")
@@ -117,8 +118,8 @@ public class BookingController {
       try {
          bookingService.rejectBooking(id);
        } catch (Exception exception) {
-         return Response.status(200, "Buchung abgelehnt").build();
+         return Response.status(404, "Buchung konnte nicht abgelehnt werden").build();
       }
-      return Response.status(404, "Buchung konnte nicht abgelehnt werden").build();
-    }
+      return Response.status(200, "Buchung abgelehnt").build();
+      }
 }
