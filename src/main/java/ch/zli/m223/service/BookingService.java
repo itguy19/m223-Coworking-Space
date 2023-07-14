@@ -16,6 +16,7 @@ public class BookingService {
 
     @Transactional
     public Booking createBooking(Booking entry) {
+        entry.set
         return entityManager.merge(entry);
     }
 

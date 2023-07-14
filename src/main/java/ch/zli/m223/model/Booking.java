@@ -19,6 +19,22 @@ public class Booking {
     @ManyToOne
     private ApplicationUser user; 
 
+    public ApplicationUser getUser() {
+        return user;
+    }
+
+    public void setUser(ApplicationUser user) {
+        this.user = user;
+    }
+
+    public boolean isApprooved() {
+        return isApprooved;
+    }
+
+    public void setApprooved(boolean isApprooved) {
+        this.isApprooved = isApprooved;
+    }
+
     @Inject
     @Column(nullable = false)
     private LocalDateTime startDateTime;
@@ -30,6 +46,10 @@ public class Booking {
     @Inject
     @Column(nullable = false)
     private boolean isCancelled;
+
+    @Inject
+    @Column(nullable = false)
+    private boolean isApprooved;
 
     @Inject
     @Column(nullable = false)

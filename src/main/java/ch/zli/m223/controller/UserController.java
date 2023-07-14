@@ -41,8 +41,8 @@ public class UserController {
    @Path("/{id}")
    @DELETE
    @Operation(
-         summary = "Deletes an user.",
-         description = "Deletes an user by its id."
+         summary = "Deletes a user.",
+         description = "Deletes a user by its id."
    )
    public Response delete(@PathParam("id") Long id) {
       try {

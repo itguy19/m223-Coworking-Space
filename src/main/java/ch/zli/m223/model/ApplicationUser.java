@@ -71,6 +71,7 @@ public class ApplicationUser {
   private Set<Booking> bookings;
 
   public ApplicationUser() {}
+  
 
   public long getId() {
     return id;

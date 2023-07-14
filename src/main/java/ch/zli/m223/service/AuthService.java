@@ -41,9 +41,10 @@ public class AuthService {
                 .build();
         }
         } catch (Exception e) {
-        System.err.println("Couldn't validate password.");
+            System.err.println("Couldn't validate password.");
+            return Response.status(400, "Daten ungültig").build();
         }
 
-        return Response.status(Response.Status.FORBIDDEN).build();
+        return Response.status(200, "Erfolgreich eingeloggt").build();
     }
 }
