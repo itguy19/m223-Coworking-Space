@@ -31,6 +31,7 @@ Nachdem erscheint das Logo von TC.S
 
 Hier können die Testfälle importiert werden.
 
+![Screenshot from 2023-07-14 16-24-36](https://github.com/itguy19/m223-Coworking-Space/assets/125930481/e48e74d0-f6ed-4b27-b31f-d1a76f97902c)
 
 
 ### Änderungen
