@@ -45,7 +45,7 @@ public class BookingService {
     @Transactional
     public void approveBooking(Long id) {
         var booking = findBooking(id);
-        booking.setApprooved(true);
+        booking.setApproved(true);
         entityManager.merge(booking);
     }
 

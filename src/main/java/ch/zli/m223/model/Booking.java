@@ -83,7 +83,7 @@ public class Booking {
         return isApprooved;
     }
 
-    public void setApprooved(boolean isApprooved) {
+    public void setApproved(boolean isApprooved) {
         this.isApprooved = isApprooved;
     }
 }
