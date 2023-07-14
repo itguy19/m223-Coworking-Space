@@ -1,4 +1,4 @@
-![image](https://github.com/itguy19/m223-Coworking-Space/assets/125930481/2c0994b5-3834-43a3-9ea8-e97991a584f0)# Coworking-Space
+# Coworking-Space
 Dieses Projekt bietet eine innovative und total sichere API für das revolutionäre Coworking-Space. Man kann Benutzer verwalten und Buchungen machen.
 
 ### Datenbankadministration
@@ -22,7 +22,14 @@ Die Testdaten werden in TestDataService automatisch bei der Start generiert.
 
 ### Testfälle
 Alle Testfälle wurden in Thunder Client erstellt.
+Um die Testfälle ausführen zu können, muss zuerst die Thunder Client
+Extension installiert werden.
+
 ![Screenshot from 2023-07-14 16-17-52](https://github.com/itguy19/m223-Coworking-Space/assets/125930481/7db0feff-a6e1-4ec3-ae46-2f0a97fb0a6e)
+
+Nachdem erscheint das Logo von TC.S
+
+Hier können die Testfälle importiert werden.
 
 
 
