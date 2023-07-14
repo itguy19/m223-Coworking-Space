@@ -44,8 +44,13 @@ public class UserController {
          summary = "Deletes an user.",
          description = "Deletes an user by its id."
    )
-   public void delete(@PathParam("id") Long id) {
-         userService.deleteUser(id);
+   public Response delete(@PathParam("id") Long id) {
+      try {
+            userService.deleteUser(id);
+      } catch (Exception exception) {
+            return Response.status(404, "Benutzer konnte nicht gelöscht").build();
+      }
+      return Response.status(204, "Benutzer erfolgreich gelöscht").build();
    }
 
    @Path("/{id}")

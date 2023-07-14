@@ -43,9 +43,9 @@ public class AuthController {
    @Operation(summary = "Authenticate a user.", description = "Returns a token upon successful authentication.")
    public Response register(ApplicationUser applicationUser) {
       try {
-      this.userService.createUser(applicationUser);
+         this.userService.createUser(applicationUser);
       } catch (Exception exception) {
-            return Response.status(201, "Registration fehlgeschlagen").build();
+         return Response.status(400, "Registration fehlgeschlagen").build();
       }
       return Response.status(201, "Erfolgreich registriert").build();
    }
