@@ -42,7 +42,11 @@ public class AuthController {
    @Consumes(MediaType.APPLICATION_JSON)
    @Operation(summary = "Authenticate a user.", description = "Returns a token upon successful authentication.")
    public Response register(ApplicationUser applicationUser) {
+      try {
       this.userService.createUser(applicationUser);
-      return Response.status(201).build();
+      } catch (Exception exception) {
+            return Response.status(201, "Registration fehlgeschlagen").build();
+      }
+      return Response.status(201, "Erfolgreich registriert").build();
    }
 }

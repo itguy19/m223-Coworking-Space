@@ -13,6 +13,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
@@ -49,11 +50,17 @@ public class UserController {
 
    @Path("/{id}")
    @PUT
+   @Consumes(MediaType.APPLICATION_JSON)
    @Operation(
          summary = "Updates an user.",
          description = "Updates an user by its id."
    )
-   public ApplicationUser update(@PathParam("id") Long id, ApplicationUser user) {
-         return userService.updateUser(id, user);
+   public Response update(@PathParam("id") Long id, ApplicationUser user) {
+      try {
+            userService.updateUser(id, user);
+      } catch (Exception exception) {
+            return Response.status(404, "Der Benutzer konnte nicht überschrieben werden").build();
+      }
+      return Response.status(200, "Der Benutzer wurde erfolgreich überschrieben").build();
    }
 }

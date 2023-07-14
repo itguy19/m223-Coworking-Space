@@ -65,7 +65,7 @@ public class ApplicationUser {
   private RoleEnum role;
 
   @Inject
-  @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   @JsonIgnore
   @Fetch(FetchMode.JOIN)
   private Set<Booking> bookings;

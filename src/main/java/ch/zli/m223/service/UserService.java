@@ -36,9 +36,10 @@ public class UserService {
     }
 
     @Transactional
-    public ApplicationUser updateUser(Long id, ApplicationUser user) {
+    public void updateUser(Long id, ApplicationUser user) {
         user.setId(id);
-        return entityManager.merge(user);
+        user.setRole(RoleEnum.MEMBER);
+        entityManager.merge(user);
     }
 
     public List<ApplicationUser> findAll() {
