@@ -17,16 +17,16 @@ public class UserService {
     private EntityManager entityManager;
 
     @Transactional
-    public ApplicationUser createUser(ApplicationUser user) {
+    public void createUser(ApplicationUser user) {
         user.setRole(RoleEnum.MEMBER);
         
         Long amountOfUsers = entityManager
                 .createNamedQuery("ApplicationUser.getAmountOfUsers", Long.class)
                 .getSingleResult();
         if (amountOfUsers == 0) {
-            user.setRole(RoleEnum.ADMIN);    
+            user.setRole(RoleEnum.ADMIN);
         }
-        return entityManager.merge(user);
+        entityManager.persist(user);
     }
 
     @Transactional

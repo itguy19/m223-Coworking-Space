@@ -26,25 +26,25 @@ public class AuthService {
         Optional<ApplicationUser> principal = userService.findByEmail(credential.getEmail());
 
         try {
-        if (principal.isPresent() && principal.get().getPassword().equals(credential.getPassword())) {
-            Instant expiration = Instant.now().plus(Duration.ofHours(24));
-            String token = Jwt
-                .issuer("https://zli.example.com/")
-                .upn(credential.getEmail())
-                .groups(new HashSet<>(Arrays.asList("member", "admin")))
-                .expiresAt(expiration)
-                .sign();
-            return Response
-                .ok(principal.get())
-                .cookie(new NewCookie("coworkingspace", token))
-                .header("Authorization", "Bearer " + token)
-                .build();
-        }
+            if (principal.isPresent() && principal.get().getPassword().equals(credential.getPassword())) {
+                Instant expiration = Instant.now().plus(Duration.ofHours(24));
+                String token = Jwt
+                    .issuer("https://zli.example.com/")
+                    .upn(credential.getEmail())
+                    .groups(new HashSet<>(Arrays.asList("member", "admin")))
+                    .expiresAt(expiration)
+                    .sign();
+                return Response
+                    .ok(principal.get())
+                    .cookie(new NewCookie("coworkingspace", token))
+                    .header("Authorization", "Bearer " + token)
+                    .build();
+            } else {
+                return Response.status(400, "Daten ungültig").build();
+            }
         } catch (Exception e) {
             System.err.println("Couldn't validate password.");
-            return Response.status(400, "Daten ungültig").build();
+            return Response.status(400, "Es ist ein Problem aufgetreten").build();
         }
-
-        return Response.status(200, "Erfolgreich eingeloggt").build();
     }
 }

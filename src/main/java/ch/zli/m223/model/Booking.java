@@ -1,6 +1,5 @@
 package ch.zli.m223.model;
 
-import javax.inject.Inject;
 import javax.persistence.*;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -10,48 +9,25 @@ import java.time.LocalDateTime;
 @Entity
 public class Booking {
     @Id
-    @Inject
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(readOnly = true)
     private Long id;
 
-    @Inject
     @ManyToOne
     private ApplicationUser user; 
 
-    public ApplicationUser getUser() {
-        return user;
-    }
-
-    public void setUser(ApplicationUser user) {
-        this.user = user;
-    }
-
-    public boolean isApprooved() {
-        return isApprooved;
-    }
-
-    public void setApprooved(boolean isApprooved) {
-        this.isApprooved = isApprooved;
-    }
-
-    @Inject
     @Column(nullable = false)
     private LocalDateTime startDateTime;
 
-    @Inject
     @Column(nullable = false)
     private LocalDateTime endDateTime;
 
-    @Inject
     @Column(nullable = false)
     private boolean isCancelled;
 
-    @Inject
     @Column(nullable = false)
     private boolean isApprooved;
-
-    @Inject
+    
     @Column(nullable = false)
     private boolean reservedForWholeDay;
 
@@ -93,5 +69,21 @@ public class Booking {
 
     public void setReservedForWholeDay(boolean reservedForWholeDay) {
         this.reservedForWholeDay = reservedForWholeDay;
+    }
+
+    public ApplicationUser getUser() {
+        return user;
+    }
+
+    public void setUser(ApplicationUser user) {
+        this.user = user;
+    }
+
+    public boolean isApprooved() {
+        return isApprooved;
+    }
+
+    public void setApprooved(boolean isApprooved) {
+        this.isApprooved = isApprooved;
     }
 }

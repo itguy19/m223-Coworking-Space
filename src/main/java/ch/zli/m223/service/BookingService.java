@@ -15,9 +15,8 @@ public class BookingService {
     private EntityManager entityManager;
 
     @Transactional
-    public Booking createBooking(Booking entry) {
-        entry.set
-        return entityManager.merge(entry);
+    public void createBooking(Booking entry) {
+        entityManager.persist(entry);
     }
 
     @Transactional
