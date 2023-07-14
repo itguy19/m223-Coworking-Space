@@ -43,16 +43,16 @@ public class BookingService {
     }
 
     @Transactional
-    public void approoveBooking(Long id) {
+    public void approveBooking(Long id) {
         var booking = findBooking(id);
-        booking.setCancelled(false);
-        updateBooking(id, booking);
+        booking.setApprooved(true);
+        entityManager.merge(booking);
     }
 
     @Transactional
     public void rejectBooking(Long id) {
         var booking = findBooking(id);
         booking.setCancelled(true);
-        updateBooking(id, booking);
+        entityManager.merge(booking);
     }
 }

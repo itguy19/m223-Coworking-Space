@@ -12,5 +12,12 @@
 2. /logout lasse ich weg, da es JWTs verwendet werden. Dieses Token muss nur im Frontend gelöscht werden.
 3. Es macht mehr Sinn bei einem Benutzer eine Rolle Variable zu benutzen, anstatt ein isAdmin boolean.
 
+### Testdaten
+Die Testdaten werden
+
 ### Testfälle
-Die Testfälle 
+Alle Testfälle wurden in Thunder Client erstellt.
+
+### Hilfsmittel
+Bei Fehlermeldungen wurde das Tool ChatGPT benutzt, um Lösungen zu finden.
+Bei Maven-Dependency-Problemen hatte ich die Hilfe von 

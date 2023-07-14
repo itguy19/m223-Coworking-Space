@@ -65,7 +65,6 @@ public class BookingController {
          return Response.status(400, "Erstellung der Buchung fehlgeschlagen").build();
       }
       return Response.status(201, "Buchung erstellt").build();
-      
     }
     
     @DELETE
@@ -73,8 +72,13 @@ public class BookingController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Deletes a booking.", description = "Deletes a booking and returns the deleted booking.")
-    public void delete(@PathParam("id") Long id) {
-       bookingService.deleteBooking(id);
+    public Response delete(@PathParam("id") Long id) {
+      try {
+         bookingService.deleteBooking(id);
+      } catch (Exception exception) {
+         return Response.status(400, "Benutzer wurde nicht angelegt").build();
+      }
+      return Response.status(201, "Benutzer erfolgreich angelegt").build();
     }
 
     @PUT
@@ -82,27 +86,39 @@ public class BookingController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Updates a booking.", description = "Updates a booking and returns the updated booking.")
-    public Booking update(@PathParam("id") Long id, Booking entry) {
-       return bookingService.updateBooking(id, entry);
+    public Booking update(@PathParam("id") Long id, Booking booking, @Context SecurityContext sc) {
+      Optional<ApplicationUser> user = userService.findByEmail(sc.getUserPrincipal().getName());
+      booking.setUser(user.orElse(null));
+      return bookingService.updateBooking(id, booking);
     }
 
     @PUT
-    @Path("/{id}/approove")
+    @Path("/approve/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @RolesAllowed("admin")
-    @Operation(summary = "Approove a booking.", description = "Approoves a booking and returns the approoved booking.")
-    public void approoveBooking(@PathParam("id") Long id) {
-       bookingService.approoveBooking(id);
+    @Operation(summary = "Approve a booking.", description = "Approves a booking and returns the approoved booking.")
+    public Response approveBooking(@PathParam("id") Long id) {
+      try {
+         bookingService.approveBooking(id);
+      } catch (Exception exception) {
+         return Response.status(200, "Buchung genehmigt").build();
+      }
+      return Response.status(404, "Buchung konnte nicht genehmigt werden").build();
     }
 
     @PUT
-    @Path("/{id}/reject")
+    @Path("/reject/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @RolesAllowed("admin")
     @Operation(summary = "Reject a booking.", description = "Reject a booking and returns the rejected booking.")
-    public void rejectBooking(@PathParam("id") Long id) {
-       bookingService.rejectBooking(id);
+    public Response rejectBooking(@PathParam("id") Long id) {
+      try {
+         bookingService.rejectBooking(id);
+       } catch (Exception exception) {
+         return Response.status(200, "Buchung abgelehnt").build();
+      }
+      return Response.status(404, "Buchung konnte nicht abgelehnt werden").build();
     }
 }
